@@ -17,20 +17,20 @@ jobs:
           echo "Running CI..."
           cat app.txt
 
-    deploy:
-      needs: build
-      runs-on: ubuntu-latest
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
 
-      steps:
-        - name: Checkout
-          uses: actions/checkout@v3
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
 
-        - name: Build Docker image
-          run: |
-            docker build -t my-app:latest .
+      - name: Build Docker image
+        run: |
+          docker build -t my-app:latest .
 
-        - name: Run container (test)
-          run: |
-            docker run -d -p 8080:80 my-app:latest
-            sleep 5
-            curl http://localhost:8080
+      - name: Run container (test)
+        run: |
+          docker run -d -p 8080:80 my-app:latest
+          sleep 5
+          curl http://localhost:8080
