@@ -15,7 +15,7 @@ jobs:
       - name: Run script
         run: |
           echo "Running CI..."
-          type app.txt
+          cat app.txt
 
       - name: Done
         run: echo "CI finished"
